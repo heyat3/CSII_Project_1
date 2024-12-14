@@ -57,7 +57,7 @@ class Logic(QMainWindow, Ui_Project1):
 
         try:
             self.tries = int(self.tries)
-            if self.tries < 0 or self.tries > 3:
+            if self.tries < 1 or self.tries > 3:
                 raise ValueError
         except(TypeError, ValueError):
             self.label_remind.setText('Please enter a valid number (1-3)')
@@ -172,7 +172,7 @@ class Logic(QMainWindow, Ui_Project1):
         grades.append(self.final)
 
         with open('data.csv', 'a', newline='') as data_csv:
-            data_writer: writer = csv.writer(data_csv, delimiter='\t')
+            data_writer: csv.writer = csv.writer(data_csv, delimiter='\t')
             data_writer.writerow(grades)
 
         self.input_student.setText('')
